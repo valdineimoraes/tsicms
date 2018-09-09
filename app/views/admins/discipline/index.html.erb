@@ -1,0 +1,43 @@
+<% provide(:page_title, 'Disciplinas') %>
+
+<div class="btn-list text-right">
+    <%= link_to 'Nova Disciplina', new_admins_discipline_path, class: 'btn btn-primary'%>
+</div>
+
+<table class="table card-table table-vcenter text-nowrap">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Code</th>
+      <th>Workload</th>
+      <th>Menu</th>
+      <th>Matrix </th>
+      <th>Period </th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @disciplines.each do |discipline| %>
+      <tr>
+        <td><%= discipline.name %></td>
+        <td><%= discipline.code %></td>
+        <td><%= discipline.hours %></td>
+        <td><%= discipline.menu %></td>
+        <td> 
+          <div class="dropdown">
+            <button class="btn btn-secondary btn-sm dropdown-tog" data-toggle="dropdown"> Gerenciar</button>
+            <div class="dropdown-menu">
+            <%= link_to 'Mostrar', admins_disciplines_path(discipline), class: 'dropdown-item'%>
+            <%= link_to 'Editar', edit_admins_discipline_path(discipline), class: 'dropdown-item'%>
+            <%= link_to 'Remover', [:admins, discipline], method: :delete,  data: { confirm: 'Are you sure?' } , class: 'dropdown-item'%>
+            </div>
+          </div>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Admins Matrix', new_admins_matrix_path %>

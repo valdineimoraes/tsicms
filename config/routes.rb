@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   
-  
   root to: 'home#index'
-  #resources :matrices
 
   #========================================
   # Admin
@@ -19,6 +17,7 @@ Rails.application.routes.draw do
 
       resources :matrices
       resources :periods
+      resources :disciplines
     end
   end
   #========================================
