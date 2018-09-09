@@ -34,7 +34,6 @@ class Admins::MatricesController < Admins::BaseController
   end
 
   protected 
-
   def matrix_params
     params.require(:matrix).permit(:name)
   end
