@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   
+  namespace :admins do
+    get 'matrix/index'
+  end
   root to: 'home#index'
 
   #========================================

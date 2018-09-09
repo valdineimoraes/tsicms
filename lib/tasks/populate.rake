@@ -5,7 +5,7 @@ namespace :db do
         [Matrix].each(&:delete_all) 
         
 
-        30.times do
+        20.times do
             Matrix.create(
             name: Faker::Name.name
             )
