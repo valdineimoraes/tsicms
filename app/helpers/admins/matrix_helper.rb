@@ -1,2 +1,0 @@
-module Admins::MatrixHelper
-end

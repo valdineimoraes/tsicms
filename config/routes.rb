@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-  namespace :admins do
-    get 'matrix/index'
-  end
+  
+  
   root to: 'home#index'
+  #resources :matrices
 
   #========================================
   # Admin
@@ -16,8 +16,9 @@ Rails.application.routes.draw do
   authenticate :admin do
     namespace :admins do
       root to: 'dashboard#index'
-      resources :academics
-      resources :matrixs
+
+      resources :matrices
+      resources :periods
     end
   end
   #========================================

@@ -1,0 +1,33 @@
+<% provide(:page_title, 'Periodos do Curso de TSI') %>
+
+<table class="table card-table table-vcenter text-nowrap">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Criado em: </th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @periods.each do |period| %>
+      <tr>
+        <td><%= period.name %></td>
+        <td><%= l(period.created_at, format: :short) %></td>
+        <td> 
+          <div class="dropdown">
+            <button class="btn btn-secondary btn-sm dropdown-tog" data-toggle="dropdown"> Gerenciar</button>
+            <div class="dropdown-menu">
+            <%= link_to 'Mostrar', admins_period_path(period), class: 'dropdown-item'%>
+            <%= link_to 'Editar', edit_admins_period_path(period), class: 'dropdown-item'%>
+            <%= link_to 'Remover', [:admins, period], method: :delete,  data: { confirm: 'Are you sure?' } , class: 'dropdown-item'%>
+            </div>
+          </div>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Admins Matrix', new_admins_matrix_path %>

@@ -1,0 +1,33 @@
+<% provide(:page_title, 'Matrizes do Curso de TSI') %>
+
+<table class="table card-table table-vcenter text-nowrap">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Criado em: </th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @matrices.each do |matrix| %>
+      <tr>
+        <td><%= matrix.name %></td>
+        <td><%= matrix.created_at %></td>
+        <td> 
+          <div class="dropdown">
+            <button class="btn btn-secondary btn-sm dropdown-tog" data-toggle="dropdown"> Gerenciar</button>
+          </div>
+
+        <!--<td><%= link_to 'Show', admins_matrix %></td>
+        <td><%= link_to 'Edit', edit_admins_matrix_path(admins_matrix) %></td>
+        <td><%= link_to 'Destroy', admins_matrix, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        -->
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Admins Matrix', new_admins_matrix_path %>
