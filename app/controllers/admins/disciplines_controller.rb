@@ -1,4 +1,6 @@
 class Admins::DisciplinesController < Admins::BaseController
+
+  before_action :set_disciplines, only: [:edit, :update, :destroy]
   
   def index
     @disciplines = Discipline.all.order(name: :asc)
@@ -33,10 +35,21 @@ class Admins::DisciplinesController < Admins::BaseController
 
   end
 
+  def destroy
+    @discipline.destroy
+    flash[:success] = "Successfully Removed"
+    redirect_to admins_disciplines_path
+  end
+
+
   protected 
 
   def discipline_params
     params.require(:discipline).permit(:name)
+  end
+
+  def set_disciplines
+    @discipline = Discipline.find(params[:id])
   end
   
   end

@@ -1,9 +1,9 @@
 
-<%= simple_form_for(@matrices) do |f| %>
+<%= simple_form_for[:admins, @matrix] do |f| %>
 
     <%= f.input :name %>
   
-  div class="d-flex">
+  <div class="d-flex">
     <%= link_to "Voltar", admins_matrices_path, class: 'btn btn-link' %>
     <%= f.button :submit %>
   </div>

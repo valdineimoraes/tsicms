@@ -1,12 +1,10 @@
 
-<%= simple_form_for(:admins, @disciplines) do |f| %>
+<%= simple_form_for[:admins, @discipline] do |f| %>
 
     <%= f.input :name %>
     <%= f.input :code %>
     <%= f.input :hours %>
     <%= f.input :menu %>
-    <%= f.association :matrix, label_method: :name, value_method: :id,
-                                prompt: "Escolha a matriz" %>
     <%= f.association :period, label_method: :name, value_method: :id,
                                 prompt: "Escolha o período" %>
 

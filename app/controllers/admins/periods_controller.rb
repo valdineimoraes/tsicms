@@ -1,5 +1,7 @@
 class Admins::PeriodsController < Admins::BaseController
 
+  before_action :set_period, only: [:edit, :update, :destroy]
+
   def index
     @periods = Period.all.order(name: :asc)
   end
@@ -19,10 +21,10 @@ class Admins::PeriodsController < Admins::BaseController
     @period = Period.find(params[:id])
 
     if @period.update_attributes(period_params)
-      flash[:sucess] = "Successfully updated"
+      flash[:success] = "Successfully updated"
       redirect_to admins_periods_path
     else
-      
+      flash[:error] = "Data with errors"
       redirect_to :edit
     end
   end
@@ -34,14 +36,26 @@ class Admins::PeriodsController < Admins::BaseController
       flash[:success] = "Successfully created period."
       redirect_to admins_periods_path
     else
-      
+      flash[:error] = "Data with errors"
       redirect_to :new
   end
+
+  def destroy 
+    @period.destroy
+    flash[:success] = "Successfully Removed"
+    redirect_to admins_periods_path
+  end
+
 
   protected
     def period_params
       params.require(:period).permit(:name)
     end
+
+    def set_period 
+      @period = Period.find(params[:id])
+    end
+
   end  
 
 end
