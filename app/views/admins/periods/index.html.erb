@@ -1,11 +1,15 @@
-<% provide(:page_title, 'Periodos do Curso de TSI') %>
+<% provide(:page_title, 'Periods') %>
+
+<div class="btn-list text-right">
+    <%= link_to 'New Period', new_admins_period_path, class: 'btn btn-primary'%>
+</div>
 
 <table class="table card-table table-vcenter text-nowrap">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Matriz</th>
-      <th>Criado em: </th>
+      <th>name</th>
+      <th>matrix</th>
+      <th>created_at: </th>
       <th></th>
     </tr>
   </thead>
@@ -15,7 +19,7 @@
       <tr>
         <td><%= period.name %></td>
          <td><%= period.name %></td>
-        <td><%= l(period.created_at, format: :short) %></td>
+        <td><%= period.created_at %></td>
         <td> 
           <div class="dropdown">
             <button class="btn btn-secondary btn-sm dropdown-tog" data-toggle="dropdown"> Gerenciar</button>

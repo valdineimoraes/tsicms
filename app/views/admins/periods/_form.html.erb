@@ -2,6 +2,8 @@
 <%= simple_form_for [:admins, @period] do |f| %>
 
     <%= f.input :name %>
+
+    <%= f.association :matrix, label_method: :name, value_method: :id, prompt: "Escolha a Matriz"  %>
   
   <div class="d-flex">
     <%= link_to "Voltar", admins_periods_path, class: 'btn btn-link' %>

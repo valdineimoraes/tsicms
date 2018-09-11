@@ -10,3 +10,4 @@ RSpec.describe Admins::DisciplineController, type: :controller do
   end
 
 end
+ 

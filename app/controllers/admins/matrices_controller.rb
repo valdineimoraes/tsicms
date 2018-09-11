@@ -1,6 +1,6 @@
 class Admins::MatricesController < Admins::BaseController
   
-  #before_action :set_matrices, only: [:edit, :update, :destroy]
+  before_action :set_matrices, only: [:edit, :update, :destroy]
 
   def index
     @matrices = Matrix.all.order(name: :asc)
@@ -43,8 +43,13 @@ class Admins::MatricesController < Admins::BaseController
 
 
   protected 
+
     def matrix_params
       params.require(:matrix).permit(:name)
+    end
+
+    def set_matrices
+      @matrix = Matrix.find(params[:id])
     end
     
     

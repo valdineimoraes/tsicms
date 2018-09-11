@@ -49,7 +49,7 @@ class Admins::PeriodsController < Admins::BaseController
 
   protected
     def period_params
-      params.require(:period).permit(:name)
+      params.require(:period).permit(:name, :matrix)
     end
 
     def set_period 

@@ -1,4 +1,4 @@
-<% provide(:page_title, 'Matriz do Curso de TSI') %>
+<% provide(:page_title, 'Matrices') %>
 
 <div class="btn-list text-right">
     <%= link_to 'Nova Matriz', new_admins_matrix_path, class: 'btn btn-primary'%>
@@ -7,8 +7,8 @@
 <table class="table card-table table-vcenter text-nowrap">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Criado em: </th>
+      <th>name</th>
+      <th>created_at </th>
       <th></th>
     </tr>
   </thead>
@@ -17,7 +17,7 @@
     <% @matrices.each do |matrix| %>
       <tr>
         <td><%= matrix.name %></td>
-        <td><%= l(matrix.created_at, format: :short) %></td>
+        <td><%= matrix.created_at %></td>
         <td> 
           <div class="dropdown">
             <button class="btn btn-secondary btn-sm dropdown-tog" data-toggle="dropdown"> Gerenciar</button>

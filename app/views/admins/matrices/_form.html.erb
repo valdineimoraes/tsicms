@@ -1,5 +1,5 @@
 
-<%= simple_form_for[:admins, @matrix] do |f| %>
+<%= simple_form_for[:admins, @matrices] do |f| %>
 
     <%= f.input :name %>
   
@@ -7,4 +7,5 @@
     <%= link_to "Voltar", admins_matrices_path, class: 'btn btn-link' %>
     <%= f.button :submit %>
   </div>
+
 <% end %>

@@ -1,9 +1,31 @@
- <% provide(:page_title, 'Disciplina ') %>
+ <% provide(:page_title, 'Discipline ') %>
+
+<p>
+  <strong>name:</strong>
+  <%= @discipline.name %>
+</p>
+
+<p>
+  <strong>code:</strong>
+  <%= @discipline.code %>
+</p>
+
+<p>
+  <strong>workload:</strong>
+  <%= @discipline.hours %>
+</p>
+
+<p>
+  <strong>menu:</strong>
+  <%= @discipline.menu %>
+</p>
 
 <p>
   <strong>Name:</strong>
   <%= @discipline.name %>
 </p>
+
+
 
  <div class="d-flex">
     <%= link_to "Voltar", admins_disciplines_path, class: 'btn btn-link' %>
