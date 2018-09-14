@@ -6,8 +6,7 @@ class CreateDisciplines < ActiveRecord::Migration[5.2]
       t.integer :hours
       t.string :menu
       t.references :period, foreign_key:true
-      t.integer :matrix
-
+      
       t.timestamps
     end
   end

@@ -6,6 +6,10 @@ class Admins::MatricesController < Admins::BaseController
     @matrices = Matrix.all.order(name: :asc)
   end
 
+  def new
+    @matrix = Matrix.new
+  end
+
   def edit
     @matrix = Matrix.find(params[:id])
   end
@@ -18,7 +22,10 @@ class Admins::MatricesController < Admins::BaseController
       redirect_to admins_matrices_path
     else
       flash[:error] = "Data with errors"
-      redirect_to :new
+      render :new
+  end
+
+  def show
   end
 
 
@@ -30,12 +37,13 @@ class Admins::MatricesController < Admins::BaseController
       flash[:success] = "Successfully updated"      
     else
       flash[:error] = "Data with errors"
-      redirect_to :edit
+      render :edit
     end
 
   end
 
   def destroy
+    @matrix = Matrix.find(params[:id])
     @matrix.destroy
     flash[:success] = "Successfully destroy" 
     redirect_to admins_matrices_path

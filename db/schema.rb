@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_09_204242) do
+ActiveRecord::Schema.define(version: 2018_09_09_145011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,10 +54,10 @@ ActiveRecord::Schema.define(version: 2018_09_09_204242) do
     t.string "code"
     t.integer "hours"
     t.string "menu"
-    t.integer "period"
-    t.integer "matrix"
+    t.bigint "period_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["period_id"], name: "index_disciplines_on_period_id"
   end
 
   create_table "matrices", force: :cascade do |t|
@@ -68,8 +68,12 @@ ActiveRecord::Schema.define(version: 2018_09_09_204242) do
 
   create_table "periods", force: :cascade do |t|
     t.string "name"
+    t.bigint "matrix_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["matrix_id"], name: "index_periods_on_matrix_id"
   end
 
+  add_foreign_key "disciplines", "periods"
+  add_foreign_key "periods", "matrices"
 end

@@ -3,18 +3,13 @@ namespace :db do
     task :populate => :environment do
 
         [Matrix].each(&:delete_all) 
-        
-
-        
-
+    
         10.times do
             Matrix.create(
                 name: Faker::Science.scientist
                   
             )
         end
-
-      
 
     end
 end

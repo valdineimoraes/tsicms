@@ -25,7 +25,7 @@ class Admins::PeriodsController < Admins::BaseController
       redirect_to admins_periods_path
     else
       flash[:error] = "Data with errors"
-      redirect_to :edit
+      render :edit
     end
   end
 
@@ -37,10 +37,11 @@ class Admins::PeriodsController < Admins::BaseController
       redirect_to admins_periods_path
     else
       flash[:error] = "Data with errors"
-      redirect_to :new
+      render :new
   end
 
   def destroy 
+    @period = Period.find(params[:id])
     @period.destroy
     flash[:success] = "Successfully Removed"
     redirect_to admins_periods_path

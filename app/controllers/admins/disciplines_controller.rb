@@ -6,19 +6,22 @@ class Admins::DisciplinesController < Admins::BaseController
     @disciplines = Discipline.all.order(name: :asc)
   end
 
+  def new
+    @discipline = Discipline.new
+  end
+
   def edit
-    @discipline = Discipline.find(params[:id])
   end
 
   def create
     @discipline = Discipline.new(discipline_params)
 
     if @discipline.save
-      flash[:success] = "Successfully created discipline."
+      flash[:success] = 'Successfully created discipline.'
       redirect_to admins_disciplines_path
     else
-      flash[:error] = "Dados incorretos"
-      redirect_to :new
+      flash[:error] = 'Data with errors'
+      render :new
   end
 
 
@@ -29,13 +32,14 @@ class Admins::DisciplinesController < Admins::BaseController
       redirect_to admins_disciplines_path
       flash[:sucess] = "Successfully updated"      
     else
-      flash[:error] = "Dados incorretos"
-      redirect_to :edit
+      flash[:error] = "Data with errors"
+      render :edit
     end
 
   end
 
   def destroy
+    @discipline = Discipline.find(params[:id])
     @discipline.destroy
     flash[:success] = "Successfully Removed"
     redirect_to admins_disciplines_path

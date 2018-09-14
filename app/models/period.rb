@@ -1,7 +1,9 @@
 class Period < ApplicationRecord
 
-    #validates :name, presence :true, uniqueness :true
+    #validates :name, presence :true
 
-    has_many :discipline
+    has_many :disciplines
+
+    belongs_to :matrix
 
 end

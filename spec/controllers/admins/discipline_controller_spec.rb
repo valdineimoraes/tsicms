@@ -2,12 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Admins::DisciplineController, type: :controller do
 
-  describe "GET #index" do
-    it "returns http success" do
-      get :index
-      expect(response).to have_http_status(:success)
-    end
+  context 'validations' do
+    it { is_expected.to validate_presence_of(:name) }}    
   end
+  
 
 end
  
