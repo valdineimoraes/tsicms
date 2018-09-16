@@ -5,8 +5,12 @@
 
     <%= f.association :matrix, label_method: :name, value_method: :id, prompt: "Escolha a Matriz"  %>
   
-  <div class="d-flex">
-    <%= link_to "Voltar", admins_periods_path, class: 'btn btn-link' %>
-    <%= f.button :submit %>
-  </div>
+    <div class="card-footer text-right">
+  
+      <div class="d-flex">
+        <%= link_to "Voltar", admins_periods_path, class: 'btn btn-link' %>
+        <%= f.button :submit, class: 'btn btn-primary ml-auto' %>
+      </div>
+    </div>
+      
 <% end %>

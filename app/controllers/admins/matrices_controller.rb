@@ -49,7 +49,6 @@ class Admins::MatricesController < Admins::BaseController
     redirect_to admins_matrices_path
   end
 
-
   protected 
 
     def matrix_params
@@ -59,10 +58,7 @@ class Admins::MatricesController < Admins::BaseController
     def set_matrices
       @matrix = Matrix.find(params[:id])
     end
-    
-    
 
   end
-
   
 end

@@ -49,7 +49,7 @@ class Admins::DisciplinesController < Admins::BaseController
   protected 
 
   def discipline_params
-    params.require(:discipline).permit(:name)
+    params.require(:discipline).permit(:name, :code, :workload, :menu, :period_id)
   end
 
   def set_disciplines
