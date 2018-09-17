@@ -1,5 +1,6 @@
 <% provide(:page_title, 'Matrices') %>
 
+
 <% breadcrumb :matrices %>
 
 <div class="btn-list text-right">
@@ -35,8 +36,8 @@
 </table>
 <br   >
 
-<div class="pagination pagination-sm no-margin pull-right">
-<%= will_paginate @matrices, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+<div class="ui right floated pagination menu ">
+  <%= will_paginate @matrices, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
 </div>
 
 

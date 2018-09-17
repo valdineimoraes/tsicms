@@ -3,7 +3,7 @@ class Admins::MatricesController < Admins::BaseController
   before_action :set_matrices, only: [:show, :edit, :update, :destroy]
 
   def index
-    @matrices = Matrix.all.paginate(:page => params[:page], :per_page => 5).order(name: :asc)
+    @matrices = Matrix.all.paginate(:page => params[:page], :per_page => 8).order(name: :asc)
   end
 
   def new
