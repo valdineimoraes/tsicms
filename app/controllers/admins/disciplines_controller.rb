@@ -14,7 +14,7 @@ class Admins::DisciplinesController < Admins::BaseController
   end
 
   def create
-    @discipline = Discipline.new(discipline_params)
+    @discipline = Discipline.new
 
     if @discipline.save
       flash[:success] = 'Successfully created discipline.'
@@ -46,7 +46,7 @@ class Admins::DisciplinesController < Admins::BaseController
   end
 
 
-  protected 
+  #protected 
 
   def discipline_params
     params.require(:discipline).permit(:name, :code, :workload, :menu, :period_id)
