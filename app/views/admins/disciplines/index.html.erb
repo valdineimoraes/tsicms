@@ -3,43 +3,46 @@
 <% breadcrumb :disciplines %>
 
 <div class="btn-list text-right">
-  <%= link_to 'New Discipline', new_admins_discipline_path, class: 'btn btn-primary'%>
+  <%= link_to 'New Discipline', new_admins_discipline_path, class: 'btn btn-primary', title: 'Cadastrar Nova Disciplina' %>
 </div>
 
-<table class="table card-table table-vcenter text-nowrap">
-  <thead>
-    <tr>
-      <th>name</th>
-      <th>code</th>
-      <th>workload</th>
-      <th>period </th>
-      <th>matrix </th>
-      <th></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @disciplines.each do |discipline| %>
+  <table class="table card-table table-vcenter text-nowrap table-responsive col-md-12">
+    <thead>
       <tr>
-        <td><%= discipline.name %></td>
-        <td><%= discipline.code %></td>
-        <td><%= discipline.hours %></td>
-        <td><%= discipline.period.name %></td>
-        <td><%= Period.matrix.name %></td>
-
-        <td> 
-          <div class="dropdown">
-            <button class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown"> Gerenciar</button>
-            <div class="dropdown-menu">
-            <%= link_to ' Visualizar', admins_disciplines_path(discipline), class: 'dropdown-item fe fe-maximize'%>
-            <%= link_to ' Editar', edit_admins_discipline_path(discipline), class: 'dropdown-item fe fe-edit'%>
-            <%= link_to ' Remover', [:admins, discipline], method: :delete,  data: { confirm: 'Are you sure?' } , class: 'dropdown-item fe fe-trash-2'%>
-            </div>
-          </div>
+        <th>name</th>
+        <th>code</th>
+        <th>workload</th>
+        <th>period </th>
+        <th>matrix </th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @disciplines.each do |discipline| %>
+        <tr>
+          <td><%= discipline.name %></td>
+          <td><%= discipline.code %></td>
+          <td><%= discipline.hours %></td>
+          <td><%= discipline.period.name %></td>
+          <td><%= discipline.period.matrix.name %></td>
+
+          <td> 
+            <div class="dropdown">
+              <button class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown"> Gerenciar</button>
+              <div class="dropdown-menu">
+                <%= link_to ' Visualizar', admins_disciplines_path(discipline), class: 'dropdown-item fe fe-maximize', title: 'Visualizar Disciplina'%>
+                <%= link_to ' Editar', edit_admins_discipline_path(discipline), class: 'dropdown-item fe fe-edit', title: 'Editar Disciplina'%>
+                <%= link_to ' Remover', [:admins, discipline], method: :delete,  data: { confirm: 'Are you sure?' } , class: 'dropdown-item fe fe-trash-2', title: 'Remover Disciplina'%>
+              </div>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
 <br>
 
 <div class="ui right floated pagination menu">

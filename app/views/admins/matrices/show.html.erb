@@ -1,4 +1,5 @@
  <% provide(:page_title, 'Matrix ') %>
+ 
  <% breadcrumb :show_matrix, @matrices %>
 
 <p>
@@ -7,5 +8,5 @@
 </p>
 
  <div class="d-flex">
-    <%= link_to "Voltar", admins_matrices_path, class: 'btn btn-link' %>
+    <%= link_to "Voltar", admins_matrices_path, class: 'btn btn-link' , title: 'Voltar para lista de Matrizes' %>
   </div>

@@ -1,6 +1,6 @@
 class Admins::MatricesController < Admins::BaseController
   
-  before_action :set_matrices, only: [:show, :edit, :update, :destroy]
+  before_action :set_matrices, only: [ :edit, :update, :destroy, :show]
 
   def index
     @matrices = Matrix.all.paginate(:page => params[:page], :per_page => 8).order(name: :asc)
@@ -23,6 +23,7 @@ class Admins::MatricesController < Admins::BaseController
     else
       flash[:error] = "Data with errors"
       render :new
+    end
   end
 
   def show
@@ -49,7 +50,7 @@ class Admins::MatricesController < Admins::BaseController
     redirect_to admins_matrices_path
   end
 
-  protected 
+  private 
 
     def matrix_params
       params.require(:matrix).permit(:name)
@@ -58,6 +59,6 @@ class Admins::MatricesController < Admins::BaseController
     def set_matrices
       @matrix = Matrix.find(params[:id])
     end
-  end  
+   
   
 end
