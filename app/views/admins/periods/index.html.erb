@@ -25,9 +25,9 @@
           <div class="dropdown">
             <button class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown"> Gerenciar</button>
             <div class="dropdown-menu">
-            <%= link_to 'Mostrar', admins_period_path(period), class: 'dropdown-item'%>
-            <%= link_to 'Editar', edit_admins_period_path(period), class: 'dropdown-item'%>
-            <%= link_to 'Remover', [:admins, period], method: :delete,  data: { confirm: 'Are you sure?' } , class: 'dropdown-item'%>
+            <%= link_to ' Visualizar', admins_period_path(period), class: 'dropdown-item fe fe-maximize'%>
+            <%= link_to ' Editar', edit_admins_period_path(period), class: 'dropdown-item fe fe-edit'%>
+            <%= link_to ' Remover', [:admins, period], method: :delete,  data: { confirm: 'Are you sure?' } , class: 'dropdown-item fe fe-trash-2'%>
             </div>
           </div>
       </tr>

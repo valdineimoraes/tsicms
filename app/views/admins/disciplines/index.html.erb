@@ -24,14 +24,14 @@
         <td><%= discipline.hours %></td>
         <td><%= discipline.period.name %></td>
         <td><%= Period.matrix.name %></td>
-        
+
         <td> 
           <div class="dropdown">
             <button class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown"> Gerenciar</button>
             <div class="dropdown-menu">
-            <%= link_to 'Mostrar', admins_disciplines_path(discipline), class: 'dropdown-item'%>
-            <%= link_to 'Editar', edit_admins_discipline_path(discipline), class: 'dropdown-item'%>
-            <%= link_to 'Remover', [:admins, discipline], method: :delete,  data: { confirm: 'Are you sure?' } , class: 'dropdown-item'%>
+            <%= link_to ' Visualizar', admins_disciplines_path(discipline), class: 'dropdown-item fe fe-maximize'%>
+            <%= link_to ' Editar', edit_admins_discipline_path(discipline), class: 'dropdown-item fe fe-edit'%>
+            <%= link_to ' Remover', [:admins, discipline], method: :delete,  data: { confirm: 'Are you sure?' } , class: 'dropdown-item fe fe-trash-2'%>
             </div>
           </div>
       </tr>
