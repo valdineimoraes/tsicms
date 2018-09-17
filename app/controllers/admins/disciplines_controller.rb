@@ -1,9 +1,9 @@
 class Admins::DisciplinesController < Admins::BaseController
 
-  before_action :set_disciplines, only: [:edit, :update, :destroy]
+  before_action :set_disciplines, only: [:show, :edit, :update, :destroy]
   
   def index
-    @disciplines = Discipline.all.order(name: :asc)
+    @disciplines = Discipline.all.paginate(:page => params[:page], :per_page => 5).order(name: :asc)
   end
 
   def new
@@ -14,7 +14,7 @@ class Admins::DisciplinesController < Admins::BaseController
   end
 
   def create
-    @discipline = Discipline.new
+    @discipline = Discipline.new(discipline_paramss)
 
     if @discipline.save
       flash[:success] = 'Successfully created discipline.'
@@ -46,15 +46,15 @@ class Admins::DisciplinesController < Admins::BaseController
   end
 
 
-  #protected 
+  protected 
 
-  def discipline_params
-    params.require(:discipline).permit(:name, :code, :workload, :menu, :period_id)
-  end
+    def discipline_params
+      params.require(:discipline).permit(:name, :code, :workload, :menu, :period_id)
+    end
 
-  def set_disciplines
-    @discipline = Discipline.find(params[:id])
-  end
+    def set_disciplines
+      @discipline = Discipline.find(params[:id])
+    end
   
   end
   

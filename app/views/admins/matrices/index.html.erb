@@ -1,5 +1,7 @@
 <% provide(:page_title, 'Matrices') %>
 
+<% breadcrumb :matrices %>
+
 <div class="btn-list text-right">
   <%= link_to 'Nova Matriz', new_admins_matrix_path, class: 'btn btn-primary'%>
 </div>
@@ -31,5 +33,10 @@
     <% end %>
   </tbody>
 </table>
+<br   >
+
+<div class="pagination pagination-sm no-margin pull-right">
+<%= will_paginate @matrices, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>
 
 

@@ -1,5 +1,7 @@
 <% provide(:page_title, 'Periods') %>
 
+<% breadcrumb :periods %>
+
 <div class="btn-list text-right">
   <%= link_to 'New Period', new_admins_period_path, class: 'btn btn-primary'%>
 </div>
@@ -35,3 +37,7 @@
   </tbody>
 
 </table>
+<br>
+<div class="pagination pagination-sm no-margin pull-right">
+<%= will_paginate @periods, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>

@@ -1,5 +1,7 @@
 <% provide(:page_title, 'Disciplines') %>
 
+<% breadcrumb :disciplines %>
+
 <div class="btn-list text-right">
   <%= link_to 'New Discipline', new_admins_discipline_path, class: 'btn btn-primary'%>
 </div>
@@ -38,3 +40,8 @@
     <% end %>
   </tbody>
 </table>
+<br>
+
+<div class="pagination pagination-sm no-margin pull-right">
+<%= will_paginate @disciplines, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>
