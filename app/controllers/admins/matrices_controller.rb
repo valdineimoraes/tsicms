@@ -60,8 +60,6 @@ class Admins::MatricesController < Admins::BaseController
       @matrix = Matrix.find(params[:id])
     end
     
-    
-
   end
 
   
