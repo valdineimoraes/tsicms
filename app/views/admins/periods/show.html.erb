@@ -4,16 +4,18 @@
   <strong>name</strong>
   <%= @period.name %>
 </p>
+
 <p>
   <strong>matrix</strong>
   <%= @period.matrix.name %>
 </p>
+
 <p>
   <strong>created_at</strong>
   <%= @period.created_at %>
 </p>
 
 
- <div class="d-flex">
-    <%= link_to "Voltar", admins_periods_path, class: 'btn btn-link' %>
-  </div>
+<div class="d-flex">
+  <%= link_to "Voltar", admins_periods_path, class: 'btn btn-link' %>
+</div>

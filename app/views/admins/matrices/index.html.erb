@@ -1,7 +1,7 @@
 <% provide(:page_title, 'Matrices') %>
 
 <div class="btn-list text-right">
-    <%= link_to 'Nova Matriz', new_admins_matrix_path, class: 'btn btn-primary'%>
+  <%= link_to 'Nova Matriz', new_admins_matrix_path, class: 'btn btn-primary'%>
 </div>
 
 <table class="table card-table table-vcenter text-nowrap">
@@ -20,7 +20,7 @@
         <td><%= matrix.created_at %></td>
         <td> 
           <div class="dropdown">
-            <button class="btn btn-secondary btn-sm dropdown-tog" data-toggle="dropdown"> Gerenciar</button>
+            <button class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown"> Gerenciar</button>
             <div class="dropdown-menu">
             <%= link_to 'Mostrar', admins_matrix_path(matrix), class: 'dropdown-item'%>
             <%= link_to 'Editar', edit_admins_matrix_path(matrix), class: 'dropdown-item'%>
@@ -31,3 +31,5 @@
     <% end %>
   </tbody>
 </table>
+
+

@@ -1,18 +1,17 @@
 <% provide(:page_title, 'Disciplines') %>
 
 <div class="btn-list text-right">
-    <%= link_to 'New Discipline', new_admins_discipline_path, class: 'btn btn-primary'%>
+  <%= link_to 'New Discipline', new_admins_discipline_path, class: 'btn btn-primary'%>
 </div>
 
 <table class="table card-table table-vcenter text-nowrap">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Code</th>
-      <th>Workload</th>
-      <th>Menu</th>
-
-      <th>Period </th>
+      <th>name</th>
+      <th>code</th>
+      <th>workload</th>
+      <th>period </th>
+      <th>matrix </th>
       <th></th>
     </tr>
   </thead>
@@ -23,10 +22,12 @@
         <td><%= discipline.name %></td>
         <td><%= discipline.code %></td>
         <td><%= discipline.hours %></td>
-        <td><%= discipline.menu %></td>
+        <td><%= discipline.period.name %></td>
+        <td><%= Period.matrix.name %></td>
+        
         <td> 
           <div class="dropdown">
-            <button class="btn btn-secondary btn-sm dropdown-tog" data-toggle="dropdown"> Gerenciar</button>
+            <button class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown"> Gerenciar</button>
             <div class="dropdown-menu">
             <%= link_to 'Mostrar', admins_disciplines_path(discipline), class: 'dropdown-item'%>
             <%= link_to 'Editar', edit_admins_discipline_path(discipline), class: 'dropdown-item'%>

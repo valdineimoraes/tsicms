@@ -2,10 +2,10 @@ namespace :db do
     desc "Erase and fill database"
     task :populate => :environment do
 
-        [Matrix].each(&:delete_all) 
+        [Period].each(&:delete_all) 
     
         10.times do
-            Matrix.create(
+            Period.create(
                 name: Faker::Science.scientist
                   
             )
