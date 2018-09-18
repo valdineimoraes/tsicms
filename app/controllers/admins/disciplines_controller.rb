@@ -46,7 +46,7 @@ class Admins::DisciplinesController < Admins::BaseController
   end
 
 
-  #protected 
+  protected 
 
   def discipline_params
     params.require(:discipline).permit(:name, :code, :workload, :menu, :period_id)

@@ -44,6 +44,7 @@ class Admins::MatricesController < Admins::BaseController
 
   def destroy
     @matrix = Matrix.find(params[:id])
+    
     @matrix.destroy
     flash[:success] = "Successfully destroy" 
     redirect_to admins_matrices_path
