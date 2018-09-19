@@ -25,29 +25,27 @@ pt-BR:
       attribute_commons: &commons
         name: 'Nome'
         email: 'Email'
-        
+        created_at: 'Criado em'        
       admin:
         password: 'Senha'
         password_confirmation: 'Confirmação de senha'
         current_password: 'Senha atual'
         remember_me: 'Lembre-me'
-
       discipline:
-        
-        name: 'Nome'
+        <<: *commons
         code: 'Código'
         workload: 'Horas'
         menu: 'Ementa'
         period: 'Periodo'
-        created_at: 'Criado em:'
-     
+        <<: *commons
       matrix:
-        
-        name: 'Nome'
-        
+        <<: *commons
+        <<: *commons
       period:
-       
-        name: 'Nome'
+        <<: *commons
+        matrix: 'Matriz'
+        <<: *commons
+
         
        
       

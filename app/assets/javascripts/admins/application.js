@@ -9,6 +9,7 @@
 //= require popper
 //= require bootstrap-sprockets
 
+
 // Vendors
 //--------------------
 
@@ -22,3 +23,5 @@
 //--------------------
 //= require lib/image_preview
 //= require admins/loads
+
+

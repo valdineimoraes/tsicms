@@ -17,8 +17,14 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'simple_form'
 gem 'rails-i18n', '~> 5.1'
+#paginação
 gem 'will_paginate-bootstrap4'
+#breadcrumbs
 gem 'gretel', '~> 3.0', '>= 3.0.9'
+#markdown
+gem 'pygments.rb','~> 0.6.0'
+gem 'redcarpet', '~> 3.2.2'
+
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

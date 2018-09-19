@@ -32,7 +32,7 @@
             <div class="dropdown">
               <button class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown"> Gerenciar</button>
               <div class="dropdown-menu">
-                <%= link_to ' Visualizar', admins_disciplines_path(discipline), class: 'dropdown-item fe fe-maximize', title: 'Visualizar Disciplina'%>
+                <%= link_to ' Visualizar', admins_discipline_path(discipline), class: 'dropdown-item fe fe-maximize', title: 'Visualizar Disciplina'%>
                 <%= link_to ' Editar', edit_admins_discipline_path(discipline), class: 'dropdown-item fe fe-edit', title: 'Editar Disciplina'%>
                 <%= link_to ' Remover', [:admins, discipline], method: :delete,  data: { confirm: 'Are you sure?' } , class: 'dropdown-item fe fe-trash-2', title: 'Remover Disciplina'%>
               </div>

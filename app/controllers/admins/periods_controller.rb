@@ -3,7 +3,7 @@ class Admins::PeriodsController < Admins::BaseController
   before_action :set_period, only: [:edit, :update, :destroy, :show ]
 
   def index
-    @periods = Period.all.paginate(:page => params[:page], :per_page => 10).order(name: :asc)
+    @periods = Period.all.paginate(:page => params[:page], :per_page => 8).order(name: :asc)
   end
 
   def new
