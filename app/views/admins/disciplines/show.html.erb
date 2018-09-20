@@ -22,9 +22,9 @@
         <%= @discipline.hours %>
       </div>
 
-      <div class="col-md-12"> 
+      <div class="col-md-12" id="content"> 
         <strong>Menu:</strong>
-        <%= @discipline.menu %>
+        <%= markdown @discipline.menu %>
       </div>
 
       <div class="col-sm-6 col-md-4">
