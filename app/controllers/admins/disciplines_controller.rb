@@ -3,7 +3,7 @@ class Admins::DisciplinesController < Admins::BaseController
   before_action :set_discipline, only: [ :edit, :update, :destroy, :show]
   
   def index
-    @disciplines = Discipline.all.paginate(:page => params[:page], :per_page =>3).order(name: :asc)
+    @disciplines = Discipline.all.paginate(:page => params[:page], :per_page =>8).order(name: :asc)
   end
 
   def new
@@ -20,10 +20,10 @@ class Admins::DisciplinesController < Admins::BaseController
     @discipline = Discipline.new(discipline_params)
 
     if @discipline.save
-      flash[:success] = 'Successfully created discipline.'
+      flash[:success] = I18n.t('flash.actions.create.f', resouce_name: Discipline.model_name.human)
       redirect_to admins_disciplines_path
     else
-      flash[:error] = 'Data with errors'
+      flash.now[:error] = I18n.t('flash.actions.errors')
       render :new
     end
   end
@@ -33,9 +33,9 @@ class Admins::DisciplinesController < Admins::BaseController
 
     if @discipline.update_attributes(discipline_params)
       redirect_to admins_disciplines_path
-      flash[:success] = "Successfully updated"      
+      flash[:success] = I18n.t('flash.actions.update.f', resouce_name: Discipline.model_name.human)
     else
-      flash[:error] = "Data with errors"
+      flash.now[:error] = I18n.t('flash.actions.errors')
       render :edit
     end
 
@@ -44,7 +44,7 @@ class Admins::DisciplinesController < Admins::BaseController
   def destroy
     @discipline = Discipline.find(params[:id])
     @discipline.destroy
-    flash[:success] = "Successfully Removed"
+    flash[:success] = I18n.t('flash.actions.destroy.f', resouce_name: Discipline.model_name.human)
     redirect_to admins_disciplines_path
   end
 

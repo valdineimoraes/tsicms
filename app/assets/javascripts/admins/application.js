@@ -12,6 +12,7 @@
 
 // Vendors
 //--------------------
+//=require config/selectize
 
 
 // Config files
