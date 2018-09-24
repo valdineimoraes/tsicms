@@ -20,7 +20,7 @@ class Admins::DisciplinesController < Admins::BaseController
     @discipline = Discipline.new(discipline_params)
 
     if @discipline.save
-      flash[:success] = I18n.t('flash.actions.create.f', resouce_name: Discipline.model_name.human)
+      flash[:success] = I18n.t('flash.actions.create.f', resource_name: Discipline.model_name.human)
       redirect_to admins_disciplines_path
     else
       flash.now[:error] = I18n.t('flash.actions.errors')
@@ -33,7 +33,7 @@ class Admins::DisciplinesController < Admins::BaseController
 
     if @discipline.update_attributes(discipline_params)
       redirect_to admins_disciplines_path
-      flash[:success] = I18n.t('flash.actions.update.f', resouce_name: Discipline.model_name.human)
+      flash[:success] = I18n.t('flash.actions.update.f', resource_name: Discipline.model_name.human)
     else
       flash.now[:error] = I18n.t('flash.actions.errors')
       render :edit
@@ -44,7 +44,7 @@ class Admins::DisciplinesController < Admins::BaseController
   def destroy
     @discipline = Discipline.find(params[:id])
     @discipline.destroy
-    flash[:success] = I18n.t('flash.actions.destroy.f', resouce_name: Discipline.model_name.human)
+    flash[:success] = I18n.t('flash.actions.destroy.f', resource_name: Discipline.model_name.human)
     redirect_to admins_disciplines_path
   end
 

@@ -21,7 +21,7 @@ class Admins::PeriodsController < Admins::BaseController
     @period = Period.find(params[:id])
 
     if @period.update_attributes(period_params)
-      flash[:success] = I18n.t('flash.actions.update.f', resouce_name: Period.model_name.human)
+      flash[:success] = I18n.t('flash.actions.update.m', resource_name: Period.model_name.human)
       redirect_to admins_periods_path
     else
       flash.now[:error] = I18n.t('flash.actions.errors')
@@ -33,7 +33,7 @@ class Admins::PeriodsController < Admins::BaseController
     @period = Period.new(period_params)
 
     if @period.save
-      flash[:success] = I18n.t('flash.actions.create.f', resouce_name: Period.model_name.human)
+      flash[:success] = I18n.t('flash.actions.create.m', resource_name: Period.model_name.human)
       redirect_to admins_periods_path
     else
       flash.now[:error] = I18n.t('flash.actions.errors')
@@ -44,7 +44,7 @@ class Admins::PeriodsController < Admins::BaseController
   def destroy 
     @period = Period.find(params[:id])
     @period.destroy
-    flash[:success] = I18n.t('flash.actions.destroy.f', resouce_name: Period.model_name.human)
+    flash[:success] = I18n.t('flash.actions.destroy.m', resource_name: Period.model_name.human)
     redirect_to admins_periods_path
   end
 
