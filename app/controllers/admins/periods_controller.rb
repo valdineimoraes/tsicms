@@ -1,9 +1,9 @@
 class Admins::PeriodsController < Admins::BaseController
 
-  before_action :set_period, only: [:edit, :update, :destroy]
+  before_action :set_period, only: [:edit, :update, :destroy, :show ]
 
   def index
-    @periods = Period.all.order(name: :asc)
+    @periods = Period.all.paginate(:page => params[:page], :per_page => 10).order(name: :asc)
   end
 
   def new
@@ -38,6 +38,7 @@ class Admins::PeriodsController < Admins::BaseController
     else
       flash[:error] = "Data with errors"
       render :new
+    end
   end
 
   def destroy 
@@ -48,7 +49,7 @@ class Admins::PeriodsController < Admins::BaseController
   end
 
 
-  protected
+  private
     def period_params
       params.require(:period).permit(:name, :matrix_id)
     end
@@ -57,6 +58,6 @@ class Admins::PeriodsController < Admins::BaseController
       @period = Period.find(params[:id])
     end
 
-  end  
+    
 
 end

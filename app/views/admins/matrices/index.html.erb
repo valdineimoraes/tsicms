@@ -1,7 +1,10 @@
 <% provide(:page_title, 'Matrices') %>
 
+
+<% breadcrumb :matrices %>
+
 <div class="btn-list text-right">
-    <%= link_to 'Nova Matriz', new_admins_matrix_path, class: 'btn btn-primary'%>
+  <%= link_to ' Nova Matriz', new_admins_matrix_path, class: 'btn btn-primary' , title: 'Cadastrar Nova Matriz' %>
 </div>
 
 <table class="table card-table table-vcenter text-nowrap">
@@ -18,16 +21,24 @@
       <tr>
         <td><%= matrix.name %></td>
         <td><%= matrix.created_at %></td>
+        
         <td> 
           <div class="dropdown">
-            <button class="btn btn-secondary btn-sm dropdown-tog" data-toggle="dropdown"> Gerenciar</button>
+            <button class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown"> Gerenciar</button>
             <div class="dropdown-menu">
-            <%= link_to 'Mostrar', admins_matrix_path(matrix), class: 'dropdown-item'%>
-            <%= link_to 'Editar', edit_admins_matrix_path(matrix), class: 'dropdown-item'%>
-            <%= link_to 'Remover', [:admins, matrix], method: :delete,  data: { confirm: 'Are you sure?' } , class: 'dropdown-item'%>
+            <%= link_to ' Visualizar', admins_matrix_path(matrix), class: 'dropdown-item fe fe-maximize', title: 'Visualizar Matriz'%>
+            <%= link_to ' Editar', edit_admins_matrix_path(matrix), class: 'dropdown-item fe fe-edit', title: 'Editar Matriz'%>
+            <%= link_to ' Remover', [:admins, matrix], method: :delete,  data: { confirm: 'Are you sure?' } , class: 'dropdown-item fe fe-trash-2', title: 'Remover Matriz'%>
             </div>
           </div>
       </tr>
     <% end %>
   </tbody>
 </table>
+<br   >
+
+<div class="ui right floated pagination menu ">
+  <%= will_paginate @matrices, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>
+
+

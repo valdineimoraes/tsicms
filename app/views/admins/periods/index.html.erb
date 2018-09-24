@@ -1,10 +1,13 @@
 <% provide(:page_title, 'Periods') %>
 
+<% breadcrumb :periods %>
+
 <div class="btn-list text-right">
-    <%= link_to 'New Period', new_admins_period_path, class: 'btn btn-primary'%>
+  <%= link_to 'New Period', new_admins_period_path, class: 'btn btn-primary', title: 'Cadastrar Novo Período'%>
 </div>
 
 <table class="table card-table table-vcenter text-nowrap">
+
   <thead>
     <tr>
       <th>name</th>
@@ -18,18 +21,24 @@
     <% @periods.each do |period| %>
       <tr>
         <td><%= period.name %></td>
-         <td><%= period.name %></td>
+         <td><%= period.matrix.name %></td>
         <td><%= period.created_at %></td>
+       
         <td> 
           <div class="dropdown">
-            <button class="btn btn-secondary btn-sm dropdown-tog" data-toggle="dropdown"> Gerenciar</button>
+            <button class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown"> Gerenciar</button>
             <div class="dropdown-menu">
-            <%= link_to 'Mostrar', admins_period_path(period), class: 'dropdown-item'%>
-            <%= link_to 'Editar', edit_admins_period_path(period), class: 'dropdown-item'%>
-            <%= link_to 'Remover', [:admins, period], method: :delete,  data: { confirm: 'Are you sure?' } , class: 'dropdown-item'%>
+            <%= link_to ' Visualizar', admins_period_path(period), class: 'dropdown-item fe fe-maximize', title: 'Visualizar Período'%>
+            <%= link_to ' Editar', edit_admins_period_path(period), class: 'dropdown-item fe fe-edit', title: 'Editar Período'%>
+            <%= link_to ' Remover', [:admins, period], method: :delete,  data: { confirm: 'Are you sure?' } , class: 'dropdown-item fe fe-trash-2', title: 'Remover Período'%>
             </div>
           </div>
       </tr>
     <% end %>
   </tbody>
+
 </table>
+<br>
+<div class="ui right floated pagination menu">
+<%= will_paginate @periods, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+</div>
