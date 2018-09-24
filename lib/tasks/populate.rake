@@ -1,15 +1,18 @@
 namespace :db do
     desc "Erase and fill database"
     task :populate => :environment do
-
-        [Period].each(&:delete_all) 
     
-        10.times do
-            Period.create(
-                name: Faker::Science.scientist
-                  
+    15.times do
+        m = Matrix.create(
+            name: Faker::Job.field
             )
-        end
 
+        6.times do    
+            p = m.periods.create
+
+            
+            p.disciples.create
+        end
+        end
     end
 end

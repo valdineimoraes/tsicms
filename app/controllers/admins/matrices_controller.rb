@@ -18,10 +18,10 @@ class Admins::MatricesController < Admins::BaseController
     @matrix = Matrix.new(matrix_params)
 
     if @matrix.save
-      flash[:success] = "Successfully created matrix."
+      flash[:success] = I18n.t('flash.actions.create.f', resource_name: Matrix.model_name.human)
       redirect_to admins_matrices_path
     else
-      flash[:error] = "Data with errors"
+      flash.now[:error] = I18n.t('flash.actions.errors')
       render :new
     end
   end
@@ -31,10 +31,10 @@ class Admins::MatricesController < Admins::BaseController
     @matrix = Matrix.find(params[:id])
 
     if @matrix.update_attributes(matrix_params)
-      redirect_to admins_matrices_path
-      flash[:success] = "Successfully updated"      
+      flash[:success] = I18n.t('flash.actions.update.f', resource_name: Matrix.model_name.human)
+      redirect_to admins_matrices_path            
     else
-      flash[:error] = "Data with errors"
+      flash.now[:error] = I18n.t('flash.actions.errors')
       render :edit
     end
 
@@ -44,7 +44,7 @@ class Admins::MatricesController < Admins::BaseController
     @matrix = Matrix.find(params[:id])
     
     @matrix.destroy
-    flash[:success] = "Successfully destroy" 
+    flash[:success] = I18n.t('flash.actions.destroy.f', resource_name: Matrix.model_name.human) 
     redirect_to admins_matrices_path
   end
 

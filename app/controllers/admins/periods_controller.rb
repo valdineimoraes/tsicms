@@ -3,7 +3,7 @@ class Admins::PeriodsController < Admins::BaseController
   before_action :set_period, only: [:edit, :update, :destroy, :show ]
 
   def index
-    @periods = Period.all.paginate(:page => params[:page], :per_page => 10).order(name: :asc)
+    @periods = Period.all.paginate(:page => params[:page], :per_page => 8).order(name: :asc)
   end
 
   def new
@@ -21,10 +21,10 @@ class Admins::PeriodsController < Admins::BaseController
     @period = Period.find(params[:id])
 
     if @period.update_attributes(period_params)
-      flash[:success] = "Successfully updated"
+      flash[:success] = I18n.t('flash.actions.update.m', resource_name: Period.model_name.human)
       redirect_to admins_periods_path
     else
-      flash[:error] = "Data with errors"
+      flash.now[:error] = I18n.t('flash.actions.errors')
       render :edit
     end
   end
@@ -33,10 +33,10 @@ class Admins::PeriodsController < Admins::BaseController
     @period = Period.new(period_params)
 
     if @period.save
-      flash[:success] = "Successfully created period."
+      flash[:success] = I18n.t('flash.actions.create.m', resource_name: Period.model_name.human)
       redirect_to admins_periods_path
     else
-      flash[:error] = "Data with errors"
+      flash.now[:error] = I18n.t('flash.actions.errors')
       render :new
     end
   end
@@ -44,7 +44,7 @@ class Admins::PeriodsController < Admins::BaseController
   def destroy 
     @period = Period.find(params[:id])
     @period.destroy
-    flash[:success] = "Successfully Removed"
+    flash[:success] = I18n.t('flash.actions.destroy.m', resource_name: Period.model_name.human)
     redirect_to admins_periods_path
   end
 

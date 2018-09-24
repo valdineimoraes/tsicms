@@ -9,8 +9,10 @@
 //= require popper
 //= require bootstrap-sprockets
 
+
 // Vendors
 //--------------------
+//=require config/selectize
 
 
 // Config files
@@ -22,3 +24,5 @@
 //--------------------
 //= require lib/image_preview
 //= require admins/loads
+
+

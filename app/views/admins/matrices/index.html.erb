@@ -6,35 +6,36 @@
 <div class="btn-list text-right">
   <%= link_to ' Nova Matriz', new_admins_matrix_path, class: 'btn btn-primary' , title: 'Cadastrar Nova Matriz' %>
 </div>
-
-<table class="table card-table table-vcenter text-nowrap">
-  <thead>
-    <tr>
-      <th>name</th>
-      <th>created_at </th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @matrices.each do |matrix| %>
+<div class="table-responsive">
+  <table class="table card-table table-vcenter text-nowrap">
+    <thead>
       <tr>
-        <td><%= matrix.name %></td>
-        <td><%= matrix.created_at %></td>
-        
-        <td> 
-          <div class="dropdown">
-            <button class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown"> Gerenciar</button>
-            <div class="dropdown-menu">
-            <%= link_to ' Visualizar', admins_matrix_path(matrix), class: 'dropdown-item fe fe-maximize', title: 'Visualizar Matriz'%>
-            <%= link_to ' Editar', edit_admins_matrix_path(matrix), class: 'dropdown-item fe fe-edit', title: 'Editar Matriz'%>
-            <%= link_to ' Remover', [:admins, matrix], method: :delete,  data: { confirm: 'Are you sure?' } , class: 'dropdown-item fe fe-trash-2', title: 'Remover Matriz'%>
-            </div>
-          </div>
+        <th><%= I18n.t('activerecord.attributes.matrix.name') %></th>
+        <th> <%= I18n.t('activerecord.attributes.matrix.created_at') %> </th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @matrices.each do |matrix| %>
+        <tr>
+          <td><%= matrix.name %></td>
+          <td><%= matrix.created_at %></td>
+          
+          <td> 
+            <div class="dropdown">
+              <button class="btn btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown"> Gerenciar</button>
+              <div class="dropdown-menu">
+              <%= link_to ' Visualizar', admins_matrix_path(matrix), class: 'dropdown-item fe fe-maximize', title: 'Visualizar Matriz'%>
+              <%= link_to ' Editar', edit_admins_matrix_path(matrix), class: 'dropdown-item fe fe-edit', title: 'Editar Matriz'%>
+              <%= link_to ' Remover', [:admins, matrix], method: :delete,  data: { confirm: 'Are you sure?' } , class: 'dropdown-item fe fe-trash-2', title: 'Remover Matriz'%>
+              </div>
+            </div>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 <br   >
 
 <div class="ui right floated pagination menu ">
