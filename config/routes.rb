@@ -12,9 +12,7 @@ Rails.application.routes.draw do
   authenticate :admin do
     namespace :admins do
       root to: 'dashboard#index'
-      resources :matrices
-      resources :periods
-      resources :disciplines
+      resources :matrices, :periods, :disciplines 
     end
   end
   #========================================

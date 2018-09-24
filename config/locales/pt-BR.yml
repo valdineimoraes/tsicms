@@ -10,6 +10,7 @@ pt-BR:
       destroy:
         m: '%{resource_name} removido com sucesso!'
         f: '%{resource_name} removida com sucesso!'
+<<<<<<< HEAD
       errors: 'Existem dados incorretos!'        
   prompt:
     confirm: 'Tem certeza?'
@@ -17,6 +18,14 @@ pt-BR:
     m: 'Selecione um %{name}'
     f: 'Selecione uma %{name}'
   
+=======
+      errors: 'Existem dados incorretos!'
+  prompt:
+    confirm: 'Tem certeza?'
+    select: 
+      m: 'Selecione um %{name}'
+      f: 'Selecione uma %{name}'
+>>>>>>> 28413ccfb572ef222bee92de573304ecac60cd50
   activerecord:
     errors:
       messages:
@@ -28,6 +37,7 @@ pt-BR:
       admin:
         one: 'Administrador'
         other: 'Administradores'
+<<<<<<< HEAD
       discipline:
         one: 'Disciplina'
         other: 'Disciplinas'
@@ -37,6 +47,14 @@ pt-BR:
       period:
         one: 'Periodo'
         other: 'Periodos'
+=======
+      category_recommendation:
+        one: 'Categoria'
+        other: 'Categorias'
+      recommendation:
+        one: 'Recomendação'
+        other: 'Recomendações'
+>>>>>>> 28413ccfb572ef222bee92de573304ecac60cd50
     attributes:
       attribute_commons: &commons
         name: 'Nome'
@@ -47,6 +65,7 @@ pt-BR:
         password_confirmation: 'Confirmação de senha'
         current_password: 'Senha atual'
         remember_me: 'Lembre-me'
+<<<<<<< HEAD
       discipline:
         <<: *commons
         code: 'Código'
@@ -63,3 +82,13 @@ pt-BR:
        
       
     
+=======
+        image: 'Imagem'
+      category_recommendation:
+        <<: *commons
+      recommendation:
+        title: 'Título'
+        description: 'Descrição'
+        image: 'Imagem'
+        category_recommendation: 'Categoria'
+>>>>>>> 28413ccfb572ef222bee92de573304ecac60cd50
