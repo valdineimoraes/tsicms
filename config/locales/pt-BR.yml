@@ -59,7 +59,7 @@ pt-BR:
         workload: 'Horas'
         menu: 'Ementa'
         period: 'Periodo'
-        <<: *commons
+        matrix: 'Matriz'
       matrix:
         <<: *commons
       period:

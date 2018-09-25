@@ -1,20 +1,20 @@
-<% provide(:page_title, 'Disciplines') %>
+<% provide(:page_title, 'Disciplinas') %>
 
 <% breadcrumb :disciplines %>
 
 <div class="btn-list text-right">
-  <%= link_to 'New Discipline', new_admins_discipline_path, class: 'btn btn-primary', title: 'Cadastrar Nova Disciplina' %>
+  <%= link_to 'Nova Disciplina', new_admins_discipline_path, class: 'btn btn-primary', title: 'Cadastrar Nova Disciplina' %>
 </div>
 
 <div class="table-responsive">
   <table class="table card-table table-vcenter text-nowrap table-responsive col-md-12">
     <thead>
       <tr>
-        <th>name</th>
-        <th>code</th>
-        <th>workload</th>
-        <th>period </th>
-        <th>matrix </th>
+        <th><%= I18n.t('activerecord.attributes.discipline.name') %></th>
+        <th><%= I18n.t('activerecord.attributes.discipline.code') %></th>
+        <th><%= I18n.t('activerecord.attributes.discipline.workload') %></th>
+        <th><%= I18n.t('activerecord.attributes.discipline.period') %> </th>
+        <th><%= I18n.t('activerecord.attributes.discipline.matrix') %> </th>
         <th></th>
       </tr>
     </thead>

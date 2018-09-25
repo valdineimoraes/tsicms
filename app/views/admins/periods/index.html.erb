@@ -1,18 +1,18 @@
-<% provide(:page_title, 'Periods') %>
+<% provide(:page_title, 'Periodos') %>
 
 <% breadcrumb :periods %>
 
 <div class="btn-list text-right">
-  <%= link_to 'New Period', new_admins_period_path, class: 'btn btn-primary', title: 'Cadastrar Novo Período'%>
+  <%= link_to 'Novo Periodo', new_admins_period_path, class: 'btn btn-primary', title: 'Cadastrar Novo Período'%>
 </div>
 <div class="table-responsive">
   <table class="table card-table table-vcenter text-nowrap">
 
     <thead>
       <tr>
-        <th>name</th>
-        <th>matrix</th>
-        <th>created_at: </th>
+        <th><%= I18n.t('activerecord.attributes.period.name') %></th>
+        <th><%= I18n.t('activerecord.attributes.period.matrix') %> </th>
+        <th> <%= I18n.t('activerecord.attributes.period.created_at') %> </th>
         <th></th>
       </tr>
     </thead>

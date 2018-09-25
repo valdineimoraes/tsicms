@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :matrix do
-    name {"Matriz 10"}
+    name {"Matriz 1000"}
   end
 end
