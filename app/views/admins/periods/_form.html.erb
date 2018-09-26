@@ -10,7 +10,7 @@
 
       <div class="col-sm-6 col-md-4">
         <%= f.association :matrix, label_method: :name, 
-        value_method: :id, prompt: "Escolha a Matriz"  %>
+            value_method: :id, prompt: "Escolha uma Matriz"  %>
       </div>
     </div>
 
@@ -19,7 +19,7 @@
   <div class="card-footer text-right">
   
     <div class="d-flex">
-      <%= link_to "Voltar", admins_periods_path, class: 'btn btn-link', title: 'Voltar para lista de Períodos' %>
+      <%= link_to "Voltar", admins_periods_path, class: 'btn btn-secondary', title: 'Voltar para lista de Períodos' %>
       <%= f.button :submit, class: 'btn btn-primary ml-auto', title: 'Cadastrar/Atualizar Período' %>
     </div>
 

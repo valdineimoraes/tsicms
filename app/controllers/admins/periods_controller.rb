@@ -58,6 +58,5 @@ class Admins::PeriodsController < Admins::BaseController
     def set_period 
       @period = Period.find(params[:id])
     end
-
   
 end
