@@ -53,11 +53,6 @@ RSpec.feature 'Disciplines', type: :feature do
         within('div.recommendation_description') do
           expect(page).to have_content(I18n.t('errors.messages.blank'))
         end
-        within('div.recommendation_image') do
-          expect(page).to have_content(I18n.t('errors.messages.extension_whitelist_error',
-                                              extension: '"pdf"',
-                                              allowed_types: 'jpg, jpeg, gif, png'))
-        end
       end
     end
   end

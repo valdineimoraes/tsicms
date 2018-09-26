@@ -17,6 +17,7 @@ class Admins::PeriodsController < Admins::BaseController
     @period = Period.find(params[:id])
   end
 
+
   def update
     @period = Period.find(params[:id])
 
@@ -58,6 +59,5 @@ class Admins::PeriodsController < Admins::BaseController
       @period = Period.find(params[:id])
     end
 
-    
-
+  
 end
