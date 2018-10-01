@@ -1,6 +1,7 @@
 FactoryBot.define do
   factory :period do
-    name {"Periodo 1"}
+    sequence(:name) {|n| "Periodo #{n}"}
+    matrix
     
   end
 end

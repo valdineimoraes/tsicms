@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Disciplines', type: :feature do
 
   let(:admin) { create(:admin) }
-  
+  let!(:period) { create_list(:period, 3).sample }
   let(:resource_name) { Discipline.model_name.human }
 
   before(:each) do
@@ -17,12 +17,11 @@ RSpec.feature 'Disciplines', type: :feature do
     end
 
     context 'with valid fields' do
-      it 'create discipline' do
+      it 'create discipline', js: true do
         attributes = attributes_for(:discipline)
 
         fill_in 'discipline_name', with: attributes[:name]
         fill_in 'discipline_code', with: attributes[:code]
-        attach_file 'recommendation_image', FileSpecHelper.image.path
         select period.name, from: 'discipline_period_id'
         submit_form
 

@@ -1,5 +1,7 @@
+
+
 FactoryBot.define do
   factory :matrix do
-    name {"Matriz 1000"}
+    sequence(:name) {|n| "Matriz #{n}"}
   end
 end

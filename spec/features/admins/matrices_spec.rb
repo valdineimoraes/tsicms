@@ -144,8 +144,8 @@ RSpec.feature 'Matrix', type: :feature do
       matrix = create(:matrix)
       visit admins_matrices_path
 
-      destroy_path = "/admins/matrices/#{matrix.id}"
-      click_link href: destroy_path
+      destroy_link = "a[href='#{admins_matrix_path(matrix)}'][data-method='delete']"
+      find(destroy_link).click
 
       expect(page).to have_selector('div.alert.alert-success',
                                     text: I18n.t('flash.actions.destroy.f',
@@ -161,7 +161,7 @@ RSpec.feature 'Matrix', type: :feature do
     let!(:matrices) { create_list(:matrix, 3) }
 
     it 'show all matrix with options' do
-      visit admins_matrix_path
+      visit admins_matrices_path
 
       matrices.each do |matrix|
         expect(page).to have_content(matrix.name)

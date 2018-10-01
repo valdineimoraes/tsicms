@@ -1,5 +1,6 @@
 FactoryBot.define do
   factory :discipline do
-    title {' '}
+    sequence(:name) {|n| "Disciplina #{n}"}
+    
   end
 end

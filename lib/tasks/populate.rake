@@ -1,7 +1,7 @@
 namespace :db do
   desc 'Erase and fill database'
   task populate: :environment do
-    [#CategoryRecommendation, Recommendation].each(&:destroy_all)
+    #CategoryRecommendation, Recommendation].each(&:destroy_all)
 
     #matrizes = %w(matriz133 matriz33)
     #matrizes.each do |matrix|

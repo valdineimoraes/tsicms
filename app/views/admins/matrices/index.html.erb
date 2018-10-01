@@ -26,7 +26,7 @@
       <% @matrices.each do |matrix| %>
         <tr>
           <td><%= matrix.name %></td>
-          <td><%= matrix.created_at %></td>
+          <td><%= l(matrix.created_at, format: :long) %></td>
 
           <td>
           <%= link_to admins_matrix_path(matrix) do%>
