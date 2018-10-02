@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     namespace :admins do
       root to: 'dashboard#index'
       resources :matrices, :periods, :disciplines 
+      resources :professors
+      resources :category_recommendations
+      resources :recommendations
+      resources :academics
     end
   end
   #========================================

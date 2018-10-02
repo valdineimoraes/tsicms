@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_09_09_145011) do
+ActiveRecord::Schema.define(version: 2018_09_10_084001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "academics", force: :cascade do |t|
+    t.string "name"
+    t.string "image"
+    t.string "contact"
+    t.boolean "graduated", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -75,6 +84,34 @@ ActiveRecord::Schema.define(version: 2018_09_09_145011) do
     t.index ["matrix_id"], name: "index_periods_on_matrix_id"
   end
 
+  create_table "professor_categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "professor_titles", force: :cascade do |t|
+    t.string "name"
+    t.string "abbrev"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "professors", force: :cascade do |t|
+    t.string "name"
+    t.string "lattes"
+    t.text "occupation_area"
+    t.string "email"
+    t.bigint "professor_title_id"
+    t.bigint "professor_category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["professor_category_id"], name: "index_professors_on_professor_category_id"
+    t.index ["professor_title_id"], name: "index_professors_on_professor_title_id"
+  end
+
   add_foreign_key "disciplines", "periods"
   add_foreign_key "periods", "matrices"
+  add_foreign_key "professors", "professor_categories"
+  add_foreign_key "professors", "professor_titles"
 end

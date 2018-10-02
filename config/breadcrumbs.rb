@@ -65,7 +65,7 @@ end
 ###############
 
 crumb :teachers do
-  link "Professores", admins_teachers_path
+  link "Professores", admins_professors_path
 end
 
 crumb :edit_teacher do |pk|
