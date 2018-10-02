@@ -23,8 +23,6 @@ gem 'will_paginate-bootstrap4'
 gem 'gretel', '~> 3.0', '>= 3.0.9'
 #markdown
 gem 'simplemde-rails'
-gem 'pygments.rb','~> 0.6.0'
-gem 'redcarpet', '~> 3.2.2'
 #active link
 gem 'active_link_to'
 

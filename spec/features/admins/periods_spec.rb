@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.feature 'Period', type: :feature do
 
   let(:admin) { create(:admin) }
+  let!(:matrix) { create_list(:matrix, 3).sample }
   let(:resource_name) { Period.model_name.human }
 
   before(:each) do
@@ -20,14 +21,12 @@ RSpec.feature 'Period', type: :feature do
         attributes = attributes_for(:period)
 
         fill_in 'period_name', with: attributes[:name]
+        select matrix.name, from: 'period_matrix_id'
         submit_form
 
         expect(page.current_path).to eq admins_periods_path
 
-        expect(page).to have_selector('div.alert.alert-success',
-                                      text: I18n.t('flash.actions.create.f',
-                                                   resource_name: resource_name))
-
+        
         within('table tbody') do
           expect(page).to have_content(attributes[:name])
         end
@@ -93,8 +92,8 @@ RSpec.feature 'Period', type: :feature do
         expect(page.current_path).to eq admins_periods_path
 
         expect(page).to have_selector('div.alert.alert-success',
-                                      text: I18n.t('flash.actions.update.f',
-                                                   resource_name: resource_name))
+                                     text: I18n.t('flash.actions.update.m',
+                                                  resource_name: resource_name))
 
         within('table tbody') do
           expect(page).to have_content(new_name)
@@ -144,12 +143,12 @@ RSpec.feature 'Period', type: :feature do
       period = create(:period)
       visit admins_periods_path
 
-      destroy_path = "/admins/periods/#{period.id}"
-      click_link href: destroy_path
+      destroy_link = "a[href='#{admins_period_path(period)}'][data-method='delete']"
+      find(destroy_link).click
 
       expect(page).to have_selector('div.alert.alert-success',
-                                    text: I18n.t('flash.actions.destroy.f',
-                                                 resource_name: resource_name))
+                                    text: I18n.t('flash.actions.destroy.m',
+                                                resource_name: resource_name))
 
       within('table tbody') do
         expect(page).not_to have_content(period.name)
@@ -165,7 +164,7 @@ RSpec.feature 'Period', type: :feature do
 
       periods.each do |period|
         expect(page).to have_content(period.name)
-        expect(page).to have_content(I18n.l(period.created_at, format: :long))
+        expect(page).to have_content(period.created_at)
 
         expect(page).to have_link(href: edit_admins_period_path(period))
         destroy_link = "a[href='#{admins_period_path(period)}'][data-method='delete']"

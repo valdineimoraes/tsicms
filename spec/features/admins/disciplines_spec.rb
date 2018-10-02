@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature 'Disciplines', type: :feature do
+RSpec.feature 'Discipline', type: :feature do
 
   let(:admin) { create(:admin) }
   let!(:period) { create_list(:period, 3).sample }
@@ -17,144 +17,160 @@ RSpec.feature 'Disciplines', type: :feature do
     end
 
     context 'with valid fields' do
-      it 'create discipline', js: true do
+      it 'create discipline' do
         attributes = attributes_for(:discipline)
 
         fill_in 'discipline_name', with: attributes[:name]
         fill_in 'discipline_code', with: attributes[:code]
+        fill_in 'discipline_hours', with: attributes[:hours]
         select period.name, from: 'discipline_period_id'
         submit_form
 
-        expect(page.current_path).to eq admins_recommendations_path
+        expect(page.current_path).to eq admins_disciplines_path
 
-        expect(page).to have_selector('div.alert.alert-success',
-                                      text: I18n.t('flash.actions.create.f',
-                                                   resource_name: resource_name))
-
+        
         within('table tbody') do
           expect(page).to have_content(attributes[:name])
-          expect(page).to have_content(category.name)
         end
       end
     end
 
-    context 'with invalid fields' do
+    context 'when invalid fields' do
       it 'show errors' do
-        attach_file 'recommendation_image', FileSpecHelper.pdf.path
         submit_form
 
         expect(page).to have_selector('div.alert.alert-danger',
                                       text: I18n.t('flash.actions.errors'))
 
-        within('div.recommendation_title') do
+        within('div.discipline_name') do
           expect(page).to have_content(I18n.t('errors.messages.blank'))
         end
-        within('div.recommendation_description') do
-          expect(page).to have_content(I18n.t('errors.messages.blank'))
+      end
+    end
+
+    context 'when has same name'  do
+      let(:discipline) { create(:discipline) }
+
+      it 'show errors' do
+        fill_in 'discipline_name', with: discipline.name
+        submit_form
+
+        within('div.discipline_name') do
+          expect(page).to have_content(I18n.t('errors.messages.taken'))
+        end
+      end
+
+      it 'show errors considering insensitive case' do
+        fill_in 'discipline_name', with: discipline.name.downcase
+        submit_form
+
+        within('div.discipline_name') do
+          expect(page).to have_content(I18n.t('errors.messages.taken'))
         end
       end
     end
   end
 
   describe '#update' do
-    let(:recommendation) { create(:recommendation) }
-    let!(:new_category) { create(:category_recommendation) }
+    let(:discipline) { create(:discipline) }
 
     before(:each) do
-      visit edit_admins_recommendation_path(recommendation)
+      visit edit_admins_discipline_path(discipline)
     end
 
     context 'fill fields' do
       it 'with correct values' do
-        expect(page).to have_field 'recommendation_title',
-          with: recommendation.title
-        expect(page).to have_field 'recommendation_description',
-          with: recommendation.description
-        expect(page).to have_select 'recommendation_category_recommendation_id',
-          selected: recommendation.category_recommendation.name
-        expect(page).to have_css("img[src*='#{recommendation.image}']")
+        expect(page).to have_field 'discipline_name', with: discipline.name
       end
     end
 
     context 'with valid fields' do
-      it 'update recommendation' do
-        attributes = attributes_for(:recommendation)
+      it 'update discipline' do
+        new_name = 'DWW5'
+        fill_in 'discipline_name', with: new_name
 
-        fill_in 'recommendation_title', with: attributes[:title]
-        fill_in 'recommendation_description', with: attributes[:description]
-        attach_file 'recommendation_image', FileSpecHelper.image.path
-        select new_category.name, from: 'recommendation_category_recommendation_id'
         submit_form
 
-        expect(page.current_path).to eq admins_recommendations_path
+        expect(page.current_path).to eq admins_disciplines_path
 
         expect(page).to have_selector('div.alert.alert-success',
-                                      text: I18n.t('flash.actions.update.f',
-                                                   resource_name: resource_name))
+                                     text: I18n.t('flash.actions.update.f',
+                                                resource_name: resource_name))
 
         within('table tbody') do
-          expect(page).to have_content(attributes[:name])
-          expect(page).to have_content(new_category.name)
+          expect(page).to have_content(new_name)
         end
       end
     end
 
-    context 'with invalid fields' do
+    context 'when invalid fields' do
       it 'show errors' do
-        fill_in 'recommendation_title', with: ''
-        fill_in 'recommendation_description', with: ''
-        attach_file 'recommendation_image', FileSpecHelper.pdf.path
+        fill_in 'discipline_name', with: ''
         submit_form
 
         expect(page).to have_selector('div.alert.alert-danger',
                                       text: I18n.t('flash.actions.errors'))
 
-        within('div.recommendation_title') do
+        within('div.discipline_name') do
           expect(page).to have_content(I18n.t('errors.messages.blank'))
         end
-        within('div.recommendation_description') do
-          expect(page).to have_content(I18n.t('errors.messages.blank'))
+      end
+    end
+
+    context 'when has same name'  do
+      let(:other_discipline) { create(:discipline) }
+
+      it 'show errors' do
+        fill_in 'discipline_name', with: other_discipline.name
+        submit_form
+
+        within('div.discipline_name') do
+          expect(page).to have_content(I18n.t('errors.messages.taken'))
         end
-        within('div.recommendation_image') do
-          expect(page).to have_content(I18n.t('errors.messages.extension_whitelist_error',
-                                              extension: '"pdf"',
-                                              allowed_types: 'jpg, jpeg, gif, png'))
+      end
+
+      it 'show errors cosidering insensitive case' do
+        fill_in 'discipline_name', with: other_discipline.name.downcase
+        submit_form
+
+        within('div.discipline_name') do
+          expect(page).to have_content(I18n.t('errors.messages.taken'))
         end
       end
     end
   end
 
   describe '#destroy' do
-    it 'recommendation' do
-      recommendation = create(:recommendation)
-      visit admins_recommendations_path
+    it 'discipline' do
+      discipline = create(:discipline)
+      visit admins_disciplines_path
 
-      destroy_path = "/admins/recommendations/#{recommendation.id}"
-      click_link href: destroy_path
+      destroy_link = "a[href='#{admins_discipline_path(discipline)}'][data-method='delete']"
+      find(destroy_link).click
 
       expect(page).to have_selector('div.alert.alert-success',
                                     text: I18n.t('flash.actions.destroy.f',
-                                                 resource_name: resource_name))
+                                                resource_name: resource_name))
 
       within('table tbody') do
-        expect(page).not_to have_content(recommendation.title)
+        expect(page).not_to have_content(discipline.name)
       end
     end
   end
 
   describe '#index' do
-    let!(:recommendations) { create_list(:recommendation, 3) }
+    let!(:disciplines) { create_list(:discipline, 3) }
 
-    it 'show all recommendations with options' do
-      visit admins_recommendations_path
+    it 'show all discipline with options' do
+      visit admins_disciplines_path
 
-      recommendations.each do |r|
-        expect(page).to have_content(r.title)
-        expect(page).to have_content(r.category_recommendation.name)
-        expect(page).to have_content(I18n.l(r.created_at, format: :long))
+      disciplines.each do |discipline|
+        expect(page).to have_content(discipline.name)
+        expect(page).to have_content(discipline.code)
+        
 
-        expect(page).to have_link(href: edit_admins_recommendation_path(r))
-        destroy_link = "a[href='#{admins_recommendation_path(r)}'][data-method='delete']"
+        expect(page).to have_link(href: edit_admins_discipline_path(discipline))
+        destroy_link = "a[href='#{admins_discipline_path(discipline)}'][data-method='delete']"
         expect(page).to have_css(destroy_link)
       end
     end 

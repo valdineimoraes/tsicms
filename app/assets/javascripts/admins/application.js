@@ -8,7 +8,7 @@
 //= require jquery3
 //= require popper
 //= require bootstrap-sprockets
-//= require simplemde.min
+
 
 
 // Vendors
@@ -18,6 +18,7 @@
 // Config files
 //--------------------
 //= require config/namespace
+//= require config/simplemde
 
 
 // App files
